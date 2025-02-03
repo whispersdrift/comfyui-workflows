@@ -1,0 +1,1725 @@
+{
+  "last_node_id": 105,
+  "last_link_id": 211,
+  "nodes": [
+    {
+      "id": 26,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        750,
+        280
+      ],
+      "size": [
+        236.8000030517578,
+        106
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 23
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 17
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 152
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 163
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 30
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            110
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 78,
+      "type": "VAEDecode",
+      "pos": [
+        911.50830078125,
+        783.6454467773438
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 148
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 150
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            149,
+            198
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 98,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        1727.287109375,
+        459.28717041015625
+      ],
+      "size": [
+        427.1917419433594,
+        458.9107666015625
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 198,
+          "dir": 3
+        },
+        {
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 199,
+          "dir": 3
+        }
+      ],
+      "outputs": [],
+      "title": "Compare with default",
+      "properties": {
+        "comparer_mode": "Slide"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_dcavo_00003_.png&type=temp&subfolder=&rand=0.32875482846766735"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_dcavo_00004_.png&type=temp&subfolder=&rand=0.4119992980105205"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 99,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        1725,
+        1012
+      ],
+      "size": [
+        430.4796142578125,
+        457.0982971191406
+      ],
+      "flags": {},
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 200,
+          "dir": 3
+        },
+        {
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 201,
+          "dir": 3
+        }
+      ],
+      "outputs": [],
+      "title": "Compare with default",
+      "properties": {
+        "comparer_mode": "Slide"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_flsod_00003_.png&type=temp&subfolder=&rand=0.46536329875310267"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_flsod_00004_.png&type=temp&subfolder=&rand=0.3473012776566271"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 27,
+      "type": "VAELoader",
+      "pos": [
+        -149,
+        393
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            25,
+            103,
+            150,
+            154
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "ae.safetensors"
+      ]
+    },
+    {
+      "id": 67,
+      "type": "PreviewImage",
+      "pos": [
+        244,
+        1005
+      ],
+      "size": [
+        447.607177734375,
+        461.6881103515625
+      ],
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 95
+        }
+      ],
+      "outputs": [],
+      "title": "Default preview image (no detailer)",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 65,
+      "type": "VAEDecode",
+      "pos": [
+        5,
+        1225
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 101
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 103
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            95,
+            197,
+            199,
+            201
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 37,
+      "type": "PreviewImage",
+      "pos": [
+        1276,
+        -82
+      ],
+      "size": [
+        444.4699401855469,
+        458.221435546875
+      ],
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 49
+        }
+      ],
+      "outputs": [],
+      "title": "Detail Daemon preview image",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 97,
+      "type": "Image Comparer (rgthree)",
+      "pos": [
+        1728,
+        -82
+      ],
+      "size": [
+        438.29681396484375,
+        458.221435546875
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image_a",
+          "type": "IMAGE",
+          "link": 196,
+          "dir": 3
+        },
+        {
+          "name": "image_b",
+          "type": "IMAGE",
+          "link": 197,
+          "dir": 3
+        }
+      ],
+      "outputs": [],
+      "title": "Compare with default",
+      "properties": {
+        "comparer_mode": "Slide"
+      },
+      "widgets_values": [
+        [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_xvjkh_00003_.png&type=temp&subfolder=&rand=0.6672726297270435"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_xvjkh_00004_.png&type=temp&subfolder=&rand=0.8250992451850219"
+          }
+        ]
+      ]
+    },
+    {
+      "id": 79,
+      "type": "PreviewImage",
+      "pos": [
+        1271.287109375,
+        454.28717041015625
+      ],
+      "size": [
+        441.1180114746094,
+        464.446533203125
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 149
+        }
+      ],
+      "outputs": [],
+      "title": "Lying Sigma Sampler preview image",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 82,
+      "type": "PreviewImage",
+      "pos": [
+        1264,
+        1002
+      ],
+      "size": [
+        448.5738525390625,
+        467.3197021484375
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 155
+        }
+      ],
+      "outputs": [],
+      "title": "Multiply Sigmas preview image",
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 81,
+      "type": "VAEDecode",
+      "pos": [
+        899,
+        1389
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 162
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 154
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            155,
+            200
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 25,
+      "type": "BasicGuider",
+      "pos": [
+        240,
+        60
+      ],
+      "size": [
+        241.79998779296875,
+        46
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 208
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 51,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            17,
+            98,
+            142,
+            157
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 22,
+      "type": "DualCLIPLoader",
+      "pos": [
+        -150,
+        210
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            140
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DualCLIPLoader"
+      },
+      "widgets_values": [
+        "clip_l.safetensors",
+        "t5xxl_fp8_e4m3fn.safetensors",
+        "flux",
+        "default"
+      ]
+    },
+    {
+      "id": 104,
+      "type": "UNETLoader",
+      "pos": [
+        -155.16427612304688,
+        65.41166687011719
+      ],
+      "size": [
+        315,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            208,
+            209
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "Lexi_Flux_Fp8-000175.safetensors",
+        "fp8_e4m3fn"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "RandomNoise",
+      "pos": [
+        230,
+        330
+      ],
+      "size": [
+        315.3865661621094,
+        82
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            23,
+            97,
+            141,
+            156
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        864377783589127,
+        "randomize"
+      ]
+    },
+    {
+      "id": 28,
+      "type": "KSamplerSelect",
+      "pos": [
+        230,
+        480
+      ],
+      "size": [
+        315,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            99,
+            146,
+            151,
+            166
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "euler"
+      ]
+    },
+    {
+      "id": 77,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        878.50830078125,
+        712.6454467773438
+      ],
+      "size": [
+        355.20001220703125,
+        326
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 141
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 142
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 165
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 164
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 145
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            148
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        230,
+        170
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            30,
+            100,
+            145,
+            160
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        768,
+        1152,
+        1
+      ]
+    },
+    {
+      "id": 66,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        -76.56665802001953,
+        1289.98486328125
+      ],
+      "size": [
+        355.20001220703125,
+        326
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 97
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 98
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 99
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 96
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 100
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            101
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        780,
+        340
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 110
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            49,
+            196
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 29,
+      "type": "BasicScheduler",
+      "pos": [
+        240.62936401367188,
+        586.4566650390625
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 209,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            96,
+            163,
+            164,
+            202,
+            205
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "beta",
+        30,
+        1
+      ]
+    },
+    {
+      "id": 100,
+      "type": "DetailDaemonGraphSigmasNode",
+      "pos": [
+        972.0277099609375,
+        -75.75645446777344
+      ],
+      "size": [
+        281.25433349609375,
+        486
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 202
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "DetailDaemonGraphSigmasNode"
+      },
+      "widgets_values": [
+        0.5,
+        0.1,
+        0.9,
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        false,
+        1
+      ]
+    },
+    {
+      "id": 80,
+      "type": "DetailDaemonSamplerNode",
+      "pos": [
+        712.5184326171875,
+        -79.10440826416016
+      ],
+      "size": [
+        228.84759521484375,
+        274
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 151
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            152
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DetailDaemonSamplerNode"
+      },
+      "widgets_values": [
+        0.5,
+        0.1,
+        0.9,
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        false,
+        0
+      ]
+    },
+    {
+      "id": 71,
+      "type": "LyingSigmaSampler",
+      "pos": [
+        841.367431640625,
+        514.1558227539062
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 146
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            165
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LyingSigmaSampler"
+      },
+      "widgets_values": [
+        -0.05,
+        0.05,
+        0.9
+      ]
+    },
+    {
+      "id": 83,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        922.2406005859375,
+        1445.26806640625
+      ],
+      "size": [
+        355.20001220703125,
+        326
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 156
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 157
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 166
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 206
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 160
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            162
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 103,
+      "type": "MultiplySigmas",
+      "pos": [
+        830.6302490234375,
+        1091.5101318359375
+      ],
+      "size": [
+        340.20001220703125,
+        106
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 205
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            206
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MultiplySigmas"
+      },
+      "widgets_values": [
+        0.96,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 38,
+      "type": "CLIPTextEncodeFlux",
+      "pos": [
+        -155.05001831054688,
+        499.6900329589844
+      ],
+      "size": [
+        338.3818054199219,
+        98
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 140
+        },
+        {
+          "name": "clip_l",
+          "type": "STRING",
+          "link": 210,
+          "widget": {
+            "name": "clip_l"
+          }
+        },
+        {
+          "name": "t5xxl",
+          "type": "STRING",
+          "link": 211,
+          "widget": {
+            "name": "t5xxl"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            51
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncodeFlux"
+      },
+      "widgets_values": [
+        "iphone photo, amaeture photograph of an ohwx woman with blonde hair pulled back wearing a white, deep V-neck full sleeves oversized jumpsuit that accentuates her large breasts. She stands on a balcony while touching her breasts with her hands, overlooking a scenic coastal landscape with a turquoise sea, green hills, and a clear blue sky. The bright daylight highlights her fair skin and the smooth texture of her jumpsuit. The balcony has cream-colored walls and a glass railing.closeup",
+        "iphone photo, amaeture photograph of an ohwx woman with blonde hair pulled back wearing a white, deep V-neck full sleeves oversized jumpsuit that accentuates her large breasts. She stands on a balcony while touching her breasts with her hands, overlooking a scenic coastal landscape with a turquoise sea, green hills, and a clear blue sky. The bright daylight highlights her fair skin and the smooth texture of her jumpsuit. The balcony has cream-colored walls and a glass railing.closeup",
+        3.5
+      ]
+    },
+    {
+      "id": 105,
+      "type": "PrimitiveNode",
+      "pos": [
+        -166.05723571777344,
+        646.1507568359375
+      ],
+      "size": [
+        375.44329833984375,
+        245.83560180664062
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            210,
+            211
+          ],
+          "slot_index": 0,
+          "widget": {
+            "name": "clip_l"
+          }
+        }
+      ],
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        "iphone photo, amaeture photograph of an ohwx woman with blonde hair pulled back wearing a white, deep V-neck full sleeves oversized jumpsuit that accentuates her large breasts. She stands on a balcony while touching her breasts with her hands, overlooking a scenic coastal landscape with a turquoise sea, green hills, and a clear blue sky. The bright daylight highlights her fair skin and the smooth texture of her jumpsuit. The balcony has cream-colored walls and a glass railing.closeup"
+      ]
+    }
+  ],
+  "links": [
+    [
+      17,
+      25,
+      0,
+      26,
+      1,
+      "GUIDER"
+    ],
+    [
+      23,
+      30,
+      0,
+      26,
+      0,
+      "NOISE"
+    ],
+    [
+      25,
+      27,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      30,
+      5,
+      0,
+      26,
+      4,
+      "LATENT"
+    ],
+    [
+      49,
+      8,
+      0,
+      37,
+      0,
+      "IMAGE"
+    ],
+    [
+      51,
+      38,
+      0,
+      25,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      95,
+      65,
+      0,
+      67,
+      0,
+      "IMAGE"
+    ],
+    [
+      96,
+      29,
+      0,
+      66,
+      3,
+      "SIGMAS"
+    ],
+    [
+      97,
+      30,
+      0,
+      66,
+      0,
+      "NOISE"
+    ],
+    [
+      98,
+      25,
+      0,
+      66,
+      1,
+      "GUIDER"
+    ],
+    [
+      99,
+      28,
+      0,
+      66,
+      2,
+      "SAMPLER"
+    ],
+    [
+      100,
+      5,
+      0,
+      66,
+      4,
+      "LATENT"
+    ],
+    [
+      101,
+      66,
+      0,
+      65,
+      0,
+      "LATENT"
+    ],
+    [
+      103,
+      27,
+      0,
+      65,
+      1,
+      "VAE"
+    ],
+    [
+      110,
+      26,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      140,
+      22,
+      0,
+      38,
+      0,
+      "CLIP"
+    ],
+    [
+      141,
+      30,
+      0,
+      77,
+      0,
+      "NOISE"
+    ],
+    [
+      142,
+      25,
+      0,
+      77,
+      1,
+      "GUIDER"
+    ],
+    [
+      145,
+      5,
+      0,
+      77,
+      4,
+      "LATENT"
+    ],
+    [
+      146,
+      28,
+      0,
+      71,
+      0,
+      "SAMPLER"
+    ],
+    [
+      148,
+      77,
+      0,
+      78,
+      0,
+      "LATENT"
+    ],
+    [
+      149,
+      78,
+      0,
+      79,
+      0,
+      "IMAGE"
+    ],
+    [
+      150,
+      27,
+      0,
+      78,
+      1,
+      "VAE"
+    ],
+    [
+      151,
+      28,
+      0,
+      80,
+      0,
+      "SAMPLER"
+    ],
+    [
+      152,
+      80,
+      0,
+      26,
+      2,
+      "SAMPLER"
+    ],
+    [
+      154,
+      27,
+      0,
+      81,
+      1,
+      "VAE"
+    ],
+    [
+      155,
+      81,
+      0,
+      82,
+      0,
+      "IMAGE"
+    ],
+    [
+      156,
+      30,
+      0,
+      83,
+      0,
+      "NOISE"
+    ],
+    [
+      157,
+      25,
+      0,
+      83,
+      1,
+      "GUIDER"
+    ],
+    [
+      160,
+      5,
+      0,
+      83,
+      4,
+      "LATENT"
+    ],
+    [
+      162,
+      83,
+      0,
+      81,
+      0,
+      "LATENT"
+    ],
+    [
+      163,
+      29,
+      0,
+      26,
+      3,
+      "SIGMAS"
+    ],
+    [
+      164,
+      29,
+      0,
+      77,
+      3,
+      "SIGMAS"
+    ],
+    [
+      165,
+      71,
+      0,
+      77,
+      2,
+      "SAMPLER"
+    ],
+    [
+      166,
+      28,
+      0,
+      83,
+      2,
+      "SAMPLER"
+    ],
+    [
+      196,
+      8,
+      0,
+      97,
+      0,
+      "IMAGE"
+    ],
+    [
+      197,
+      65,
+      0,
+      97,
+      1,
+      "IMAGE"
+    ],
+    [
+      198,
+      78,
+      0,
+      98,
+      0,
+      "IMAGE"
+    ],
+    [
+      199,
+      65,
+      0,
+      98,
+      1,
+      "IMAGE"
+    ],
+    [
+      200,
+      81,
+      0,
+      99,
+      0,
+      "IMAGE"
+    ],
+    [
+      201,
+      65,
+      0,
+      99,
+      1,
+      "IMAGE"
+    ],
+    [
+      202,
+      29,
+      0,
+      100,
+      0,
+      "SIGMAS"
+    ],
+    [
+      205,
+      29,
+      0,
+      103,
+      0,
+      "SIGMAS"
+    ],
+    [
+      206,
+      103,
+      0,
+      83,
+      3,
+      "SIGMAS"
+    ],
+    [
+      208,
+      104,
+      0,
+      25,
+      0,
+      "MODEL"
+    ],
+    [
+      209,
+      104,
+      0,
+      29,
+      0,
+      "MODEL"
+    ],
+    [
+      210,
+      105,
+      0,
+      38,
+      1,
+      "STRING"
+    ],
+    [
+      211,
+      105,
+      0,
+      38,
+      2,
+      "STRING"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Multiply Sigmas",
+      "bounding": [
+        720,
+        937,
+        1450,
+        543
+      ],
+      "color": "#8A8",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 2,
+      "title": "Lying Sigmas",
+      "bounding": [
+        725,
+        399,
+        1445,
+        530
+      ],
+      "color": "#b58b2a",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 3,
+      "title": "Detail Daemon",
+      "bounding": [
+        722,
+        -150,
+        1450,
+        539
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "id": 4,
+      "title": "Default (no detailer)",
+      "bounding": [
+        -150,
+        925,
+        857,
+        555
+      ],
+      "color": "#a1309b",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.26333125430608106,
+      "offset": [
+        753.0593490175504,
+        597.3325311844876
+      ]
+    },
+    "node_versions": {
+      "comfy-core": "0.3.13",
+      "rgthree-comfy": "5d771b8b56a343c24a26e8cea1f0c87c3d58102f",
+      "comfyui-detail-daemon": "1.1.0"
+    }
+  },
+  "version": 0.4
+}
